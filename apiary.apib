@@ -13,6 +13,10 @@ List all configuration maps. Allows filtering base on provided labels
 
     
 + Request A request with valid namespace
+    
+    + Parameters 
+        + namespace: validNamespace
+        
     + Headers
             
             Accept-Version: 1.0.0
@@ -45,6 +49,9 @@ List all configuration maps. Allows filtering base on provided labels
 
 
 + Request A requet with valid namespace but without ConfigMaps
+    + Parameters 
+        + namespace: emptyNamespace
+    
     + Headers
             
             Accept-Version: 1.0.0
@@ -67,6 +74,9 @@ List all configuration maps. Allows filtering base on provided labels
 
 
 + Request A request witout namespace parameter
+    + Parameters 
+        + namespace: emptyNamespace
+    
     + Headers
             
             Accept-Version: 1.0.0
@@ -92,6 +102,10 @@ List all configuration maps. Allows filtering base on provided labels
 
             
 + Request A request with not existing namespace
+    
+    + Parameters 
+        + namespace: notExistingNamespace
+    
     + Headers
             
             Accept-Version: 1.0.0
@@ -111,4 +125,4 @@ List all configuration maps. Allows filtering base on provided labels
                         field: "namespace"
                     }
                 ]
-            }            
+            }

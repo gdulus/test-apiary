@@ -1,0 +1,114 @@
+FORMAT: 1A
+
+# OpsGateway
+An REST gateway exposing OPS features as a sevice
+
+## K8S ConfigMaps [/infr/k8s/configmaps{?namespace}]
+
+### List all ConfigMaps [GET]
+List all configuration maps. Allows filtering base on provided labels
+
++ Parameters
+    + namespace: `nrg` (string, required) - Namespace from which ConfigMap should be retruned
+
+    
++ Request A request with valid namespace
+    + Headers
+            
+            Accept-Version: 1.0.0
+            Content-Type: application/json
+
++ Response 200 (application/json)
+    Returns list of ConfigMap associatied with specific namespace when any found
+    + Body    
+        
+            {  
+                "data": [
+                    {
+                        "id": "ps-app-app01-01",
+                        "created": "2015-08-05T08:40:51.620Z",
+                        "last_updated": "2015-08-05T08:40:51.620Z",
+                        "last_modified_by": "user1",
+                        "body": "
+                            a = 1
+                            b = 2
+                            c = 3
+                        "
+                    }
+                ], 
+                "meta": {
+                    "items": 1
+                },
+                "errors": []
+            }
+            
+
+
++ Request A requet with valid namespace but without ConfigMaps
+    + Headers
+            
+            Accept-Version: 1.0.0
+            Content-Type: application/json
+
++ Response 200 (application/json)
+    Returns list of ConfigMap associatied with specific namespace when any found
+    + Body    
+        
+            {  
+                "data": [], 
+                "meta": { 
+                    "items": 0 
+                },
+                "errors": []
+            }            
+
+
+
+
+
++ Request A request witout namespace parameter
+    + Headers
+            
+            Accept-Version: 1.0.0
+            Content-Type: application/json
+
++ Response 401 (application/json)
+    + Body    
+        
+            {  
+                "data": [], 
+                "meta": { 
+                    "items": 0 
+                },
+                "errors": [
+                    {
+                        code: "error.validation.empty",
+                        field: "namespace"
+                    }
+                ]
+            }            
+
+
+
+            
++ Request A request with not existing namespace
+    + Headers
+            
+            Accept-Version: 1.0.0
+            Content-Type: application/json
+
++ Response 401 (application/json)
+    + Body    
+        
+            {  
+                "data": [], 
+                "meta": { 
+                    "items": 0 
+                },
+                "errors": [
+                    {
+                        code: "error.validation.notExists",
+                        field: "namespace"
+                    }
+                ]
+            }            
